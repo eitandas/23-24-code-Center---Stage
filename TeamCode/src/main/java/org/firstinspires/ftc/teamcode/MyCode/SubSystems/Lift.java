@@ -20,7 +20,7 @@ public class Lift {
 
     private final double levels[] = {0, 0, 0};
 
-    private PIDFController pid = new PIDFController(0, 0, 0, 0);
+    private PIDFController pid = new PIDFController(0.11, 0.00015, 0.000000001, 0.4);
 
     private final double TOLERANCE = 0;
 
