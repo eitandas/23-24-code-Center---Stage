@@ -216,4 +216,8 @@ public class MecanumDrive {
         // Stop the robot once the target pose is reached
         stop();
     }
+
+    public double getAngle(){
+        return this.angle;
+    }
 }
