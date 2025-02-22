@@ -44,6 +44,9 @@ public class Intake {
         setPower(AUTO_OUTTAKE_SPEED);
     }
 
+    public void stop(){
+        setPower(0);
+    }
 
 
 }
