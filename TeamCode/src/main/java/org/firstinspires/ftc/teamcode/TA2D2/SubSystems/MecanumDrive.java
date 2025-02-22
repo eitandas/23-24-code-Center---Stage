@@ -40,6 +40,10 @@ public class MecanumDrive {
     private final double yTolerance = 0;
     private final double zTolerance = 0;
 
+    private double xCMPerTick = 0;
+    private double yCMPerTick = 0;
+
+
     // Name for this subsystem (used in debug logs)
     private static final String SUBSYSTEM_NAME = "Mecanum Drive";
 
@@ -110,9 +114,9 @@ public class MecanumDrive {
         angle = MathUtil.normalizeAngle(angle);
 
         // Calculate the rotated position using the encoder values
-        rotatedPos = new Pose2d(
+        rotatedPos = new Pose2d(xCMPerTick *
                 (leftXEncoder.getCurrentPosition() + rightXEncoder.getCurrentPosition()) / 2,
-                yEncoder.getCurrentPosition(),
+                yCMPerTick * yEncoder.getCurrentPosition(),
                 angle
         );
 
