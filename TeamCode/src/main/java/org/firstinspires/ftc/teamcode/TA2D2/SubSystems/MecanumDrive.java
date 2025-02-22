@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TA2D2.SubSystems;
 
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -36,9 +37,9 @@ public class MecanumDrive {
     private PIDFController zPid = new PIDFController(0.65, 0.000000001, 0, 0);
 
     // Tolerances for PID control
-    private final double xTolerance = 0;
-    private final double yTolerance = 0;
-    private final double zTolerance = 0;
+    private final double xTolerance = 10;
+    private final double yTolerance = 10;
+    private final double zTolerance = 2;
 
     private double xMMPerTick = (8192.0 * 1.0)/ (35 * Math.PI);
     private double yMMPerTick = (8192.0 * 1.0)/ (35 * Math.PI);
@@ -87,6 +88,9 @@ public class MecanumDrive {
         xPid.setTolerance(xTolerance);
         yPid.setTolerance(yTolerance);
         zPid.setTolerance(zTolerance);
+
+        //
+        imu.initialize(new IMU.Parameters(new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.UP, RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD)));
     }
 
     /**
